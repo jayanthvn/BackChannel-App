@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
  before_filter :authenticate, :only => [:create, :destroy]
- before_filter :authorized_user, :only => :destroy
+ before_filter :admin_user, :only => :destroy
 
  def new
    @title = "microposts"
@@ -53,5 +53,10 @@ class MicropostsController < ApplicationController
       @micropost = current_user.microposts.find_by_id(params[:id])
       redirect_to root_path if @micropost.nil?
     end
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+
+  end
 end
 
