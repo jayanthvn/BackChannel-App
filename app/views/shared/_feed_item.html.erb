@@ -22,7 +22,7 @@
                   Posted <%= time_ago_in_words(c.created_at) %> ago.
                   </span>
                   <span>Votes :<%= c.C_votes %></span>
-                  <span><%= link_to "+1", c, :method => :increment %></span>
+                  <span><%= link_to "+1", c, :controller => 'comments' , :method => :increment %></span>
 
                   <br />
 

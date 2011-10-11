@@ -34,6 +34,8 @@ BackChannelApp::Application.configure do
   # like if you have constraints or database-specific column types
   # config.active_record.schema_format = :sql
 
+  config.gem "webrat", :version => ">0.4.3"
+
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
