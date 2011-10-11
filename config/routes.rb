@@ -3,12 +3,13 @@ BackChannelApp::Application.routes.draw do
 
   resources :comments
 
-  resources :users
+  resources :lookups
 
   get "replies/create"
 
   get "replies/destroy"
 
+  get "users/show"
   resources :replies
 
   get "microposts/create"
@@ -22,10 +23,6 @@ BackChannelApp::Application.routes.draw do
   get "pages/home"
 
   get "pages/contact"
-
-  get "users/show"
-
-  get "users/temp"
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
@@ -83,7 +80,6 @@ BackChannelApp::Application.routes.draw do
   # root :to => 'welcome#index'
      root :to => 'pages#home'
 
-
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -97,12 +93,10 @@ BackChannelApp::Application.routes.draw do
   match '/replies' , :to => 'replies#new'
   match '/users', :to => 'users#show'
   match '/createadmin', :to => 'users#create'
-  match '/reports' , :to=> 'pages#reports'
-  match '/temp' , :to => 'users#temp'
   match '/comments', :to => 'comments#create'
+  match '/search', :to => 'lookups#new'
   match '/microposts/:id', :to => 'microposts#increment'
+  match '/comments/:id', :to => 'comments#increment'
   match ':controller(/:action(/:id))'
   match ':controller(/:action(/:id(.:format)))'
-
-
 end
