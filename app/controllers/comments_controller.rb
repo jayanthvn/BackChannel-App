@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
          #micropost_id = :id
         @comment = @post.comments.build(params[:comment])
          @comment.User_name = params[:User_name]
+		@comment.user_id = params[:User_id]
           @post.increment(:weight)
         if @comment.save && @post.save
       flash[:success] = "Micropost created!"
@@ -27,6 +28,10 @@ class CommentsController < ApplicationController
        @comment.save
        redirect_to root_path
 
+     end
+
+	def show
+       increment
      end
 
   end

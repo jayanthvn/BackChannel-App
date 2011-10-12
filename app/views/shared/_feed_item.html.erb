@@ -33,7 +33,7 @@
           <td>
 
               <span class="content">
-                <%= form_for @comment, :url => {:User_name => current_user.name , :controller => 'comments' , :action => 'create' , :id => feed_item.id },:method => :put do |f| %>
+                <%= form_for @comment, :url => {:User_name => current_user.name , :User_id => current_user.id, :controller => 'comments' , :action => 'create' , :id => feed_item.id },:method => :put do |f| %>
                  <%= render 'shared/comment_form' %>
                     <%end %>
               </span>
