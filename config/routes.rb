@@ -28,6 +28,7 @@ BackChannelApp::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy, :increment]
   resources :relationships, :only => [:create, :destroy]
+  resources :comments, :only => [:create, :increment]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -92,6 +93,7 @@ BackChannelApp::Application.routes.draw do
   match '/sessions', :to => 'sessions#create'
   match '/replies' , :to => 'replies#new'
   match '/users', :to => 'users#show'
+  match '/reports', :to => 'pages#reports'
   match '/createadmin', :to => 'users#create'
   match '/comments', :to => 'comments#create'
   match '/search', :to => 'lookups#new'
